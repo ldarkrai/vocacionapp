@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recursos Vocacionales</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="feed.html">🏠 Inicio</a>
+      <a href="feed.html">🗣 Feed</a>
+      <a href="contacto.html">📩 Contacto</a>
+      <a href="recursos.html" class="active">📚 Recursos</a>
+    </div>
+    <div class="navbar-right" id="navbarUserControls">
+
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>📚 Recursos de Orientación Vocacional</h2>
+
+    <div class="recurso">
+      <h3>🧠 Test de intereses vocacionales</h3>
+      <p>Realiza estos tests para descubrir tus áreas más afines.</p>
+      <button class="primary-button" onclick="abrirModalTests()">Ver Tests Disponibles</button>
+    </div>
+
+    <div class="recurso">
+      <h3>🎥 Video: ¿Cómo elegir tu carrera?</h3>
+      <p>Aqui encontraras una playlist con videos que explican cómo tomar decisiones más claras.</p>
+      <a href="https://www.youtube.com/watch?v=QzIVM0jOmD8&list=PLEiltYphXiMSX0LLahGqC4-KNsipqsj8p" target="newtab">Ver en YouTube</a>
+    </div>
+
+    <div class="recurso">
+      <h3>💬 Frase del día</h3>
+      <blockquote id="fraseDelDia">
+        <!-- La frase aleatoria se insertará aquí -->
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- Modal para Tests Vocacionales -->
+  <div id="modalTests" class="modal">
+    <div class="modal-content">
+      <span class="modal-close-button" onclick="cerrarModalTests()">&times;</span>
+      <h3>Tests Vocacionales Disponibles</h3>
+      <ul id="listaTests">
+        <li>
+          <p><strong>Universidad Piloto de Colombia</strong></p>
+          <p>Ofrece un "Test de Evaluación de Inteligencias Múltiples" que te ayuda a determinar qué carreras son adecuadas para ti.</p>
+          <a href="https://testvocacional.unipiloto.edu.co/" target="_blank">Realizar Test</a>
+        </li>
+        <li>
+          <p><strong>UNIMINUTO (Generación UNIMINUTO)</strong></p>
+          <p>Cuenta con un test vocacional para estudiantes que están saliendo del colegio.</p>
+          <a href="https://generacion.uniminuto.edu/colegios" target="_blank">Visitar Sitio</a>
+        </li>
+        <li>
+          <p><strong>Universidad de Medellín (UVirtual Abierta)</strong></p>
+          <p>Dispone de un test de orientación vocacional con diferentes áreas de afinidad.</p>
+          <a href="https://uvirtualabierta.udemedellin.edu.co/local/testvocacional/" target="_blank">Realizar Test</a>
+        </li>
+        <li>
+          <p><strong>Fundación Universitaria Los Libertadores</strong></p>
+          <p>También menciona un test vocacional en su sitio web.</p>
+          <a href="https://www.ulibertadores.edu.co/landings/test-vocacional-promocion/" target="_blank">Visitar Sitio</a>
+        </li>
+        <li>
+          <p><strong>Graddus</strong></p>
+          <p>Utiliza inteligencia artificial para ayudarte a elegir tu siguiente paso académico según tus intereses, aspiraciones y rendimiento.</p>
+          <a href="https://graddus.com/" target="_blank">Visitar Graddus</a>
+        </li>
+        <li>
+          <p><strong>Edumatch (Cursosycarreras.co)</strong></p>
+          <p>Ofrece un test vocacional online gratuito que te acerca a tu profesión ideal, considerando tus preferencias y habilidades.</p>
+          <a href="https://www.cursosycarreras.co/test_vocacional_orientacion_vocacional.php" target="_blank">Realizar Test Online</a>
+        </li>
+        <li>
+          <p><strong>Protosabios</strong></p>
+          <p>Tiene un test vocacional general y tests específicos para cada rama del conocimiento. No requiere registro.</p>
+          <a href="https://www.protosabios.com/test-vocacional" target="_blank">Visitar Protosabios</a>
+        </li>
+        <li>
+          <p><strong>Elegir Carrera</strong></p>
+          <p>Ofrece un test vocacional gratuito con preguntas sobre tus intereses y preferencias.</p>
+          <a href="https://www.elegircarrera.net/test-vocacional/" target="_blank">Realizar Test</a>
+        </li>
+        <li>
+          <p><strong>UVM (Universidad del Valle de México)</strong></p>
+          <p>Ofrece un test vocacional online gratuito que explora tus talentos, fortalezas, y te sugiere opciones de licenciaturas.</p>
+          <a href="https://uvm.mx/test-vocacional" target="_blank">Realizar Test</a>
+        </li>
+        <li>
+          <p><strong>Santander SmartBank - Smart Talent Scanner</strong></p>
+          <p>Un test vocacional inteligente que te ayuda a descubrir profesiones de futuro.</p>
+          <a href="https://santandersmartbank.es/talent-scanner/" target="_blank">Usar Talent Scanner</a>
+        </li>
+        <li>
+          <p><strong>Test de Orientación Vocacional CHASIDE (PDF)</strong></p>
+          <p>Un test reconocido y popular. Versión en PDF para descargar.</p>
+          <a href="https://iesfernandodelosrios.com/wp-content/uploads/2023/01/Test-de-Orientacion-Vocacional-Chaside-1.pdf" target="_blank" download="Test_CHASIDE.pdf">Descargar PDF (IES Fernando de los Ríos)</a>
+          <a href="https://www.fcad.uner.edu.ar/extension/test-de-orientacion-vocacional-chaside/" target="_blank">Ver en FCAD UNER</a>
+        </li>
+        <li>
+          <p><strong>Alcaldía La Magdalena Contreras (México) - Test PDF</strong></p>
+          <p>Ofrece un test de orientación vocacional en PDF.</p>
+          <a href="https://mcontreras.gob.mx/wp-content/uploads/2021/02/TEST-OrientacionVocacional-ALMC-08-02-2021_pdf.pdf" target="_blank" download="Test_Orientacion_Vocacional_ALMC.pdf">Descargar PDF</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const frases = [
+        {
+          texto: "Tu vocación es aquello que haces tan bien, que harías aunque no te pagaran.",
+          autor: "Anónimo"
+        },
+        {
+          texto: "El futuro pertenece a aquellos que creen en la belleza de sus sueños.",
+          autor: "Eleanor Roosevelt"
+        },
+        {
+          texto: "No importa lo lento que vayas mientras no te detengas.",
+          autor: "Confucio"
+        },
+        {
+          texto: "El éxito no es la clave de la felicidad. La felicidad es la clave del éxito. Si amas lo que estás haciendo, tendrás éxito.",
+          autor: "Albert Schweitzer"
+        },
+        {
+          texto: "La mejor manera de predecir el futuro es crearlo.",
+          autor: "Peter Drucker"
+        },
+        {
+          texto: "La vocación no se impone, se descubre.",
+          autor: "Jean Guitton"
+        },
+        {
+          texto: "El propósito de la vida es descubrir tu don. El sentido de la vida es entregarlo.",
+          autor: "Pablo Picasso"
+        },
+        {
+          texto: "Elige un trabajo que te guste y no tendrás que trabajar ni un día de tu vida.",
+          autor: "Confucio"
+        },
+        {
+          texto: "La vocación es la espina dorsal de la vida.",
+          autor: "Friedrich Nietzsche"
+        },
+        {
+          texto: "Haz de tu vocación una misión y nunca perderás el rumbo.",
+          autor: "Anónimo"
+        },
+        {
+          texto: "No preguntes qué necesita el mundo. Pregúntate qué te hace sentir vivo y haz eso.",
+          autor: "Howard Thurman"
+        },
+        {
+          texto: "La única manera de hacer un gran trabajo es amar lo que haces.",
+          autor: "Steve Jobs"
+        },
+        {
+          texto: "Donde tus talentos y las necesidades del mundo se cruzan, ahí está tu vocación.",
+          autor: "Aristóteles"
+        },
+        {
+          texto: "La pasión es el combustible de la vocación.",
+          autor: "Robin Sharma"
+        },
+        {
+          texto: "Encuentra tu propósito y luego entrégale tu corazón y tu alma.",
+          autor: "Buddha"
+        },
+        {
+          texto: "Si escuchas a tu corazón, rara vez te equivocarás de camino.",
+          autor: "Anónimo"
+        },
+        {
+          texto: "Cuando trabajas con lo que amas, la excelencia se convierte en un hábito.",
+          autor: "Aristóteles"
+        },
+        {
+          texto: "Cada persona tiene una vocación, y el verdadero éxito consiste en encontrarla.",
+          autor: "Thomas Carlyle"
+        },
+        {
+          texto: "Tu trabajo va a llenar gran parte de tu vida, así que haz lo que amas.",
+          autor: "Steve Jobs"
+        },
+        {
+          texto: "Lo que se hace con el corazón, trasciende.",
+          autor: "Anónimo"
+        },
+        {
+          texto: "Trabajar sin vocación es como caminar sin rumbo.",
+          autor: "Anónimo"
+        },
+        {
+          texto: "No te preguntes qué puedes hacer por el mundo, sino qué te hace sentir vivo al hacerlo.",
+          autor: "Frederick Buechner"
+        },
+        {
+          texto: "La vocación es una chispa divina. Si la sigues, se convierte en fuego.",
+          autor: "Anónimo"
+        },
+        {
+          texto: "Lo que el mundo necesita son personas que hayan cobrado vida.",
+          autor: "Howard Thurman"
+        },
+        {
+          texto: "Sigue tu vocación, aunque el camino parezca incierto. La pasión lo iluminará.",
+          autor: "Anónimo"
+        }
+      ];
+
+      const fraseElemento = document.getElementById('fraseDelDia');
+      
+      if (fraseElemento) {
+        const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+        fraseElemento.textContent = `"${fraseAleatoria.texto}" — ${fraseAleatoria.autor}`;
+      }
+    });
+
+    // Funciones para el modal de tests
+    const modalTests = document.getElementById('modalTests');
+    const listaTestsItems = document.querySelectorAll('#listaTests li');
+
+    function abrirModalTests() {
+      if (modalTests && listaTestsItems.length > 0) {
+
+        listaTestsItems.forEach(item => item.style.display = 'none');
+
+
+        const itemsArray = Array.from(listaTestsItems);
+        
+
+        for (let i = itemsArray.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [itemsArray[i], itemsArray[j]] = [itemsArray[j], itemsArray[i]];
+        }
+        
+
+        const maxItemsToShow = Math.min(3, itemsArray.length);
+        for (let i = 0; i < maxItemsToShow; i++) {
+          itemsArray[i].style.display = 'block';
+        }
+        
+        modalTests.style.display = 'block';
+      } else if (modalTests) {
+        modalTests.style.display = 'block';
+      }
+    }
+
+    function cerrarModalTests() {
+      if (modalTests) {
+        modalTests.style.display = 'none';
+      }
+    }
+
+    // Cerrar el modal si se hace clic fuera del contenido del modal
+    window.onclick = function(event) {
+      if (event.target == modalTests) {
+        cerrarModalTests();
+      }
+    }
+  </script>
+  <script src="app.js"></script>
+  <footer class="footer">
+    <p>&copy; 2025 Vocaionapp. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

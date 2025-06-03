@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mi Perfil - Vocaionapp</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="feed.html">🏠 Inicio</a>
+      <a href="feed.html">🗣 Feed</a>
+      <a href="contacto.html">📩 Contacto</a>
+      <a href="recursos.html">📚 Recursos</a>
+    </div>
+    <div class="navbar-right" id="navbarUserControls">
+    </div>
+  </nav>
+
+  <div class="container profile-container">
+    <h2>⚙️ Configuración de Perfil</h2>
+
+    <div class="profile-section">
+      <h3>🔑 Cambiar Contraseña</h3>
+      <div class="form-group">
+        <label for="currentPassword">Contraseña Actual:</label>
+        <input type="password" id="currentPassword" placeholder="Tu contraseña actual">
+      </div>
+      <div class="form-group">
+        <label for="newPassword">Nueva Contraseña:</label>
+        <input type="password" id="newPassword" placeholder="Mínimo 6 caracteres">
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirmar Nueva Contraseña:</label>
+        <input type="password" id="confirmPassword" placeholder="Repite la nueva contraseña">
+      </div>
+      <button id="changePasswordBtn" class="primary-button">Cambiar Contraseña</button>
+      <p id="passwordChangeStatus" class="status-message"></p>
+    </div>
+
+    <div class="profile-section">
+      <h3>🎨 Preferencias de Tema</h3>
+      <div class="theme-options">
+        <p>Selecciona el tema de la aplicación:</p>
+        <button id="themeLightBtn" class="theme-button" data-theme="light">Claro ☀️</button>
+        <button id="themeDarkBtn" class="theme-button" data-theme="dark">Oscuro 🌙</button>
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h3>🛡️ Modo Administrador</h3>
+      <div class="admin-mode-options">
+        <p>Activar funciones de administrador.</p>
+        <label class="switch">
+          <input type="checkbox" id="adminModeToggle">
+          <span class="slider round"></span>
+        </label>
+        <span id="adminModeStatus" style="margin-left: 10px;">Desactivado</span>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 Vocaionapp. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const usuarioLogueado = localStorage.getItem("usuario");
+      if (!usuarioLogueado) {
+        window.location.href = 'index.html';
+        return;
+      }
+
+      const changePasswordBtn = document.getElementById('changePasswordBtn');
+      const currentPasswordInput = document.getElementById('currentPassword');
+      const newPasswordInput = document.getElementById('newPassword');
+      const confirmPasswordInput = document.getElementById('confirmPassword');
+      const passwordChangeStatus = document.getElementById('passwordChangeStatus');
+
+      if (changePasswordBtn) {
+        changePasswordBtn.addEventListener('click', () => {
+          const currentPass = currentPasswordInput.value;
+          const newPass = newPasswordInput.value;
+          const confirmPass = confirmPasswordInput.value;
+
+          passwordChangeStatus.textContent = ''; 
+          passwordChangeStatus.className = 'status-message';
+
+
+          if (!currentPass || !newPass || !confirmPass) {
+            passwordChangeStatus.textContent = 'Por favor, completa todos los campos.';
+            passwordChangeStatus.classList.add('error');
+            return;
+          }
+          if (newPass.length < 6) {
+            passwordChangeStatus.textContent = 'La nueva contraseña debe tener al menos 6 caracteres.';
+            passwordChangeStatus.classList.add('error');
+            return;
+          }
+          if (newPass !== confirmPass) {
+            passwordChangeStatus.textContent = 'Las nuevas contraseñas no coinciden.';
+            passwordChangeStatus.classList.add('error');
+            return;
+          }
+
+          console.log(`Simulando cambio de contraseña para ${usuarioLogueado}. Nueva contraseña: ${newPass}`);
+          passwordChangeStatus.textContent = 'Contraseña cambiada exitosamente.';
+          passwordChangeStatus.classList.add('success');
+          
+          currentPasswordInput.value = '';
+          newPasswordInput.value = '';
+          confirmPasswordInput.value = '';
+
+          setTimeout(() => {
+            passwordChangeStatus.textContent = '';
+            passwordChangeStatus.className = 'status-message';
+          }, 4000);
+        });
+      }
+
+      const themeLightBtn = document.getElementById('themeLightBtn');
+      const themeDarkBtn = document.getElementById('themeDarkBtn');
+      const bodyElement = document.body;
+
+      function applyTheme(theme) {
+        if (theme === 'dark') {
+          bodyElement.classList.add('dark-theme');
+          bodyElement.classList.remove('light-theme');
+        } else {
+          bodyElement.classList.add('light-theme');
+          bodyElement.classList.remove('dark-theme');
+        }
+        localStorage.setItem('theme', theme);
+        updateThemeButtonStates(theme);
+      }
+      
+      function updateThemeButtonStates(activeTheme) {
+        if (activeTheme === 'dark') {
+            themeDarkBtn.classList.add('active');
+            themeLightBtn.classList.remove('active');
+        } else {
+            themeLightBtn.classList.add('active');
+            themeDarkBtn.classList.remove('active');
+        }
+      }
+
+      if (themeLightBtn) {
+        themeLightBtn.addEventListener('click', () => applyTheme('light'));
+      }
+      if (themeDarkBtn) {
+        themeDarkBtn.addEventListener('click', () => applyTheme('dark'));
+      }
+
+
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      applyTheme(savedTheme);
+
+      const adminModeToggle = document.getElementById('adminModeToggle');
+      const adminModeStatus = document.getElementById('adminModeStatus');
+
+      function setAdminMode(isAdmin) {
+        if (isAdmin) {
+          localStorage.setItem('isAdmin', 'true');
+          adminModeStatus.textContent = 'Activado';
+          adminModeToggle.checked = true;
+          console.log('Modo Administrador Activado');
+        } else {
+          localStorage.removeItem('isAdmin');
+          adminModeStatus.textContent = 'Desactivado';
+          adminModeToggle.checked = false;
+          console.log('Modo Administrador Desactivado');
+        }
+      }
+
+      const savedAdminMode = localStorage.getItem('isAdmin') === 'true';
+      setAdminMode(savedAdminMode);
+
+
+      if (adminModeToggle) {
+        adminModeToggle.addEventListener('change', (event) => {
+          setAdminMode(event.target.checked);
+        });
+      }
+
+    });
+  </script>
+</body>
+</html>

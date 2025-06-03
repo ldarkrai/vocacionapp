@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bienvenido - Vocaionapp</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>Bienvenido 👋</h1>
+    <p>Ingresa con tu correo institucional y contraseña.</p>
+
+    <input type="email" id="email" placeholder="correo@unimagdalena.edu.co" />
+    <input type="password" id="password" placeholder="Contraseña" />
+
+    <div class="buttons">
+      <button onclick="iniciarSesion()">Entrar</button>
+    </div>
+  </div>
+
+  <script>
+    localStorage.removeItem('usuario');
+
+    function iniciarSesion() {
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
+
+      if (email === "" || password === "") {
+        alert('Por favor, completa todos los campos.');
+        return;
+      }
+
+      if (!email.endsWith('@unimagdalena.edu.co')) {
+        alert('Por favor, ingresa un correo institucional válido de Unimagdalena.');
+        return;
+      }
+
+      const nombreUsuario = email.split('@')[0];
+      localStorage.setItem('usuario', nombreUsuario);
+      window.location.href = 'feed.html';
+    }
+  </script>
+
+  <footer class="footer">
+    <p>&copy; 2025 Vocaionapp. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

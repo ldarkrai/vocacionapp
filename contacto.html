@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contacto con Psicólogo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="feed.html">🏠 Inicio</a>
+      <a href="feed.html">🗣 Feed</a>
+      <a href="contacto.html" class="active">📩 Contacto</a>
+      <a href="recursos.html">📚 Recursos</a>
+    </div>
+    <div class="navbar-right" id="navbarUserControls">
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>📩 Contacta con un Psicólogo</h2>
+    <p>Tu mensaje será enviado de forma privada.</p>
+
+    <input type="text" id="nombre" placeholder="Tu nombre" />
+    <input type="text" id="asunto" placeholder="Asunto del mensaje" />
+    <textarea id="mensaje" placeholder="Describe tu situación aquí..." rows="5"></textarea>
+    <button onclick="enviarMensaje()" class="primary-button">Enviar</button>
+    <p id="estado" style="margin-top: 1rem; color: green;"></p>
+  </div>
+
+  <script>
+    function enviarMensaje() {
+      const nombreInput = document.getElementById('nombre');
+      const asuntoInput = document.getElementById('asunto');
+      const mensajeInput = document.getElementById('mensaje');
+      const estado = document.getElementById('estado');
+
+      const nombre = nombreInput.value.trim();
+      const asunto = asuntoInput.value.trim();
+      const mensaje = mensajeInput.value.trim();
+
+      if (asunto === "" || mensaje === "" || nombre === "") {
+        alert("Debe llenar todos los campos.");
+        return;
+      }
+
+      // Simulación de envío para el prototipo
+      console.log("Mensaje de contacto (prototipo):", { nombre, asunto, mensaje, timestamp: new Date().toISOString() });
+      
+
+      const contactosGuardados = JSON.parse(localStorage.getItem("contactos")) || [];
+      contactosGuardados.push({ nombre, asunto, mensaje, timestamp: new Date().toISOString() });
+      localStorage.setItem("contactos", JSON.stringify(contactosGuardados));
+      
+
+      estado.style.color = "green";
+      estado.textContent = "Tu mensaje ha sido enviado exitosamente. Espera en tu correo una respuesta en las próximas 24 horas.";
+      
+      nombreInput.value = "";
+      asuntoInput.value = "";
+      mensajeInput.value = "";
+
+      // Limpiar el mensaje de estado después de unos segundos
+      setTimeout(() => {
+        estado.textContent = "";
+      }, 3000);
+    }
+  </script>
+  <script src="app.js"></script>
+  <footer class="footer">
+    <p>&copy; 2025 Vocaionapp. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
