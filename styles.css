@@ -60,7 +60,7 @@ body {
   align-items: center;
   min-height: 100vh; /*IMPORTANTE */
   padding-top: calc(60px + var(--spacing-xl)); 
-  background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('assets/images/bg_page.png');
+  background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('bg_page.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -719,7 +719,7 @@ body.dark-theme {
 }
 
 body.dark-theme {
-  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('assets/images/bg_page.png');
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('bg_page.png');
 }
 
 body.dark-theme .mensaje {
